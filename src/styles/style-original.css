@@ -1,6 +1,33 @@
+/* Styles from original tutorial app */
+
 /**********************************************
 *** GENERAL
 **********************************************/
+
+.final-score {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 520px;
+  color: #555;
+  font-size: 18px;
+  font-family: 'Lato';
+  text-align: center;
+  padding: 10px;
+  width: 160px;
+  text-transform: uppercase;
+}
+
+.final-score:focus {
+  outline: none;
+}
+
+#dice-1 {
+  top: 120px;
+}
+#dice-2 {
+  top: 250px;
+}
 
 * {
   margin: 0;
@@ -19,7 +46,7 @@ body {
       rgba(62, 20, 20, 0.4),
       rgba(62, 20, 20, 0.4)
     ),
-    url(back.jpg);
+    url(../images/back.jpg);
   background-size: cover;
   background-position: center;
   font-family: Lato;
@@ -108,21 +135,17 @@ body {
 }
 
 button {
-  cursor: pointer;
-  border: none;
-  text-transform: uppercase;
-}
-
-button,
-input {
   position: absolute;
   width: 200px;
   left: 50%;
   transform: translateX(-50%);
   color: #555;
   background: none;
+  border: none;
   font-family: Lato;
   font-size: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
   font-weight: 300;
   transition: background-color 0.3s, color 0.3s;
 }
@@ -152,38 +175,6 @@ i {
 .btn-new {
   top: 45px;
 }
-
-#score-input {
-  top: 95px;
-  border: 0.5px solid #eb4d4d;
-  width: 135px;
-  opacity: 0.75;
-  height: 35px;
-  text-align: left;
-  padding-left: 10px;
-}
-.btn-input {
-  top: 96px;
-  position: absolute;
-  left: 59%;
-  width: 50px;
-  color: #eb4d4d;
-}
-.btn-input i {
-  font-size: 30pt;
-  padding-left: 2px;
-}
-#default-score {
-  top: 135px;
-  position: absolute;
-  left: 46%;
-}
-#score-to-win {
-  top: 135px;
-  position: absolute;
-  left: 42.5%;
-}
-
 .btn-roll {
   top: 403px;
 }
@@ -198,23 +189,6 @@ i {
   transform: translateX(-50%);
   height: 100px;
   box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.1);
-}
-#wrong-move-icon {
-  position: absolute;
-  left: 50.75%;
-  top: 52.5px;
-  transform: translateX(-50%);
-}
-#wrong-move-icon i {
-  font-size: 350px;
-  opacity: 0.5;
-  color: #dcdcdc;
-}
-#wrong-move-text {
-  position: absolute;
-  left: 50.75%;
-  top: 300px;
-  transform: translateX(-50%);
 }
 
 .winner {
