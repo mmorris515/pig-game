@@ -10,3 +10,65 @@ GAME RULES:
 - The first player to reach 100 points on GLOBAL score wins the game (or selected final score)
 
 */
+
+import React from 'react';
+import Dice from '../components/Dice.js';
+
+class Original extends React.Component {
+  render() {
+    return (
+      <div className="wrapper clearfix">
+        <div className="player-0-panel active">
+          <div className="player-name" id="name-0">
+            Player 1
+          </div>
+          <div className="player-score" id="score-0">
+            {this.props.scores[0]}
+          </div>
+          <div className="player-current-box">
+            <div className="player-current-label">Current</div>
+            <div className="player-current-score" id="current-0">
+              11
+            </div>
+          </div>
+        </div>
+
+        <div className="player-1-panel">
+          <div className="player-name" id="name-1">
+            Player 2
+          </div>
+          <div className="player-score" id="score-1">
+            {this.props.scores[1]}
+          </div>
+          <div className="player-current-box">
+            <div className="player-current-label">Current</div>
+            <div className="player-current-score" id="current-1">
+              0
+            </div>
+          </div>
+        </div>
+
+        <button className="btn-new">
+          <i className="ion-ios-plus-outline"></i>New game
+        </button>
+        <button className="btn-roll" onClick={this.props.handleDiceRoll}>
+          <i className="ion-ios-loop"></i>Roll dice
+        </button>
+        <button className="btn-hold" onClick={this.props.handleHold}>
+          <i className="ion-ios-download-outline"></i>Hold
+        </button>
+
+        <input type="text" placeholder="Final score" className="final-score" />
+
+        {/*
+        <img src={dice} alt="Dice" className="dice" id="dice-1" />
+        <img src={dice} alt="Dice" className="dice" id="dice-2" />
+        */}
+        <Dice diceId="dice-1" />
+        <Dice diceId="dice-2" />
+      </div>
+    );
+  }
+}
+
+export default Original;
