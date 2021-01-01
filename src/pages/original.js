@@ -18,7 +18,7 @@ class Original extends React.Component {
   render() {
     return (
       <div className="wrapper clearfix">
-        <div className="player-0-panel active">
+        <div className={this.props.player0PanelCss}>
           <div className="player-name" id="name-0">
             Player 1
           </div>
@@ -33,7 +33,7 @@ class Original extends React.Component {
           </div>
         </div>
 
-        <div className="player-1-panel">
+        <div className={this.props.player1PanelCss}>
           <div className="player-name" id="name-1">
             Player 2
           </div>
@@ -64,8 +64,7 @@ class Original extends React.Component {
         <img src={dice} alt="Dice" className="dice" id="dice-1" />
         <img src={dice} alt="Dice" className="dice" id="dice-2" />
         */}
-        <Dice diceId="dice-1" />
-        <Dice diceId="dice-2" />
+        <Dice diceId="dice-1" diceDisplay={this.props.diceDisplay} />
       </div>
     );
   }
