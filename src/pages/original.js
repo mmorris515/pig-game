@@ -28,7 +28,7 @@ class Original extends React.Component {
           <div className="player-current-box">
             <div className="player-current-label">Current</div>
             <div className="player-current-score" id="current-0">
-              11
+              {this.props.activePlayer === 0 ? this.props.roundScore : 0}
             </div>
           </div>
         </div>
@@ -43,7 +43,7 @@ class Original extends React.Component {
           <div className="player-current-box">
             <div className="player-current-label">Current</div>
             <div className="player-current-score" id="current-1">
-              0
+              {this.props.activePlayer === 1 ? this.props.roundScore : 0}
             </div>
           </div>
         </div>

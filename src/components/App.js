@@ -22,7 +22,7 @@ class App extends React.Component {
     this.setState({
       scores: [0, 0],
       activePlayer: 0,
-      roundScore: 0,
+      roundScore: 10,
       winningScore: 100,
       moveMade: false,
       gamePlaying: true,
@@ -70,6 +70,8 @@ class App extends React.Component {
           diceDisplay={this.state.diceDisplay}
           player0PanelCss={this.state.player0PanelCss}
           player1PanelCss={this.state.player1PanelCss}
+          roundScore={this.state.roundScore}
+          activePlayer={this.state.activePlayer}
         />
       </div>
     );
