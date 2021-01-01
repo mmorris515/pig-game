@@ -3,10 +3,19 @@ import Original from '../pages/original.js';
 import '../styles/style-original.css';
 
 class App extends React.Component {
-  state = {scores: [0, 0], activePlayer: 0, roundScore: 0, gamePlaying: true};
+  state = {
+    scores: [0, 0],
+    activePlayer: 0,
+    roundScore: 0,
+    gamePlaying: true,
+    diceDisplay: {display: 'none'},
+    player0PanelCss: 'player-0-panel',
+    player1PanelCss: 'player-1-panel',
+  };
 
   componentDidMount() {
     console.log('Component mounted');
+    console.log(this.state.diceDisplay);
     this.init();
   }
 
@@ -16,18 +25,23 @@ class App extends React.Component {
       activePlayer: 0,
       roundScore: 0,
       gamePlaying: true,
+      diceDisplay: {display: 'none'},
+      player0PanelCss: 'player-0-panel active',
     });
   }
 
-  /* TO INCLUDE IN: init()
+  /* Already included in init()
     document.querySelector('.dice').style.display = 'none';
 
+    TO INCLUDE IN: init()
     document.getElementById('score-0').textContent = '0';
     document.getElementById('score-1').textContent = '0';
     document.getElementById('current-0').textContent = '0';
     document.getElementById('current-1').textContent = '0';
     document.getElementById('name-0').textContent = 'Player 1';
     document.getElementById('name-1').textContent = 'Player 2';
+
+    ***Need to define the logic here
     document.querySelector('.player-0-panel').classList.remove('winner');
     document.querySelector('.player-1-panel').classList.remove('winner');
     document.querySelector('.player-0-panel').classList.remove('active');
@@ -52,6 +66,9 @@ class App extends React.Component {
           scores={this.state.scores}
           handleDiceRoll={this.diceRoll}
           handleHold={this.hold}
+          diceDisplay={this.state.diceDisplay}
+          player0PanelCss={this.state.player0PanelCss}
+          player1PanelCss={this.state.player1PanelCss}
         />
       </div>
     );
