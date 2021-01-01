@@ -7,15 +7,14 @@ class App extends React.Component {
     scores: [0, 0],
     activePlayer: 0,
     roundScore: 0,
-    gamePlaying: true,
+    gamePlaying: false,
+    moveMade: false,
     diceDisplay: {display: 'none'},
     player0PanelCss: 'player-0-panel',
     player1PanelCss: 'player-1-panel',
   };
 
   componentDidMount() {
-    console.log('Component mounted');
-    console.log(this.state.diceDisplay);
     this.init();
   }
 
@@ -24,6 +23,8 @@ class App extends React.Component {
       scores: [0, 0],
       activePlayer: 0,
       roundScore: 0,
+      winningScore: 100,
+      moveMade: false,
       gamePlaying: true,
       diceDisplay: {display: 'none'},
       player0PanelCss: 'player-0-panel active',
