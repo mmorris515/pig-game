@@ -27,13 +27,8 @@ class App extends React.Component {
       moveMade: false,
       gamePlaying: true,
       diceDisplay: {display: 'none'},
-      player0PanelCss: 'player-0-panel active',
     });
     console.log('New game started');
-  }
-
-  diceRoll() {
-    console.log('Dice Rolled');
   }
 
   hold() {
@@ -48,21 +43,35 @@ class App extends React.Component {
     console.log('Next Player');
   }
 
+  diceRoll() {
+    console.log('Dice rolled');
+    // 1. Random number
+    const dice = Math.floor(Math.random() * 6) + 1;
+
+    //2. Update the round score IF the rolled number was NOT a 1
+    if (dice !== 1) {
+      //Add score
+      let currentRoundScore = this.state.roundScore;
+      currentRoundScore += dice;
+      this.setState({roundScore: currentRoundScore});
+    } else {
+      this.nextPlayer();
+    }
+  }
+
   // Final rendered app
   render() {
     return (
       <div>
         <Original
           scores={this.state.scores}
-          handleDiceRoll={this.diceRoll}
           handleHold={this.hold}
           diceDisplay={this.state.diceDisplay}
-          player0PanelCss={this.state.player0PanelCss}
-          player1PanelCss={this.state.player1PanelCss}
           roundScore={this.state.roundScore}
           activePlayer={this.state.activePlayer}
           init={this.init.bind(this)}
           nextPlayer={this.nextPlayer.bind(this)}
+          diceRoll={this.diceRoll.bind(this)}
         />
       </div>
     );

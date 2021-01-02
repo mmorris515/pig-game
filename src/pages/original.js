@@ -63,7 +63,7 @@ class Original extends React.Component {
         <button className="btn-new" onClick={this.props.init}>
           <i className="ion-ios-plus-outline"></i>New game
         </button>
-        <button className="btn-roll" onClick={this.props.handleDiceRoll}>
+        <button className="btn-roll" onClick={this.props.diceRoll}>
           <i className="ion-ios-loop"></i>Roll dice
         </button>
         <button className="btn-hold" onClick={this.props.nextPlayer}>
@@ -77,6 +77,7 @@ class Original extends React.Component {
         <img src={dice} alt="Dice" className="dice" id="dice-2" />
         */}
         <Dice diceId="dice-1" diceDisplay={this.props.diceDisplay} />
+        <Dice diceId="dice-2" diceDisplay={this.props.diceDisplay} />
       </div>
     );
   }
