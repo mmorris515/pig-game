@@ -48,7 +48,7 @@ class Original extends React.Component {
           </div>
         </div>
 
-        <button className="btn-new">
+        <button className="btn-new" onClick={this.props.init}>
           <i className="ion-ios-plus-outline"></i>New game
         </button>
         <button className="btn-roll" onClick={this.props.handleDiceRoll}>
