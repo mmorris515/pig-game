@@ -18,7 +18,13 @@ class Original extends React.Component {
   render() {
     return (
       <div className="wrapper clearfix">
-        <div className={this.props.player0PanelCss}>
+        <div
+          className={
+            this.props.activePlayer === 0
+              ? 'player-0-panel active'
+              : 'player-0-panel'
+          }
+        >
           <div className="player-name" id="name-0">
             Player 1
           </div>
@@ -33,7 +39,13 @@ class Original extends React.Component {
           </div>
         </div>
 
-        <div className={this.props.player1PanelCss}>
+        <div
+          className={
+            this.props.activePlayer === 1
+              ? 'player-1-panel active'
+              : 'player-1-panel'
+          }
+        >
           <div className="player-name" id="name-1">
             Player 2
           </div>
@@ -54,7 +66,7 @@ class Original extends React.Component {
         <button className="btn-roll" onClick={this.props.handleDiceRoll}>
           <i className="ion-ios-loop"></i>Roll dice
         </button>
-        <button className="btn-hold" onClick={this.props.handleHold}>
+        <button className="btn-hold" onClick={this.props.nextPlayer}>
           <i className="ion-ios-download-outline"></i>Hold
         </button>
 

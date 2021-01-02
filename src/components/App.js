@@ -5,7 +5,7 @@ import '../styles/style-original.css';
 class App extends React.Component {
   state = {
     scores: [0, 0],
-    activePlayer: 0,
+    activePlayer: null,
     roundScore: 0,
     gamePlaying: false,
     moveMade: false,
@@ -40,6 +40,14 @@ class App extends React.Component {
     console.log('Hold');
   }
 
+  nextPlayer() {
+    this.state.activePlayer === 0
+      ? this.setState({activePlayer: 1})
+      : this.setState({activePlayer: 0});
+    this.setState({roundScore: 0});
+    console.log('Next Player');
+  }
+
   // Final rendered app
   render() {
     return (
@@ -54,6 +62,7 @@ class App extends React.Component {
           roundScore={this.state.roundScore}
           activePlayer={this.state.activePlayer}
           init={this.init.bind(this)}
+          nextPlayer={this.nextPlayer.bind(this)}
         />
       </div>
     );
