@@ -44,17 +44,22 @@ class App extends React.Component {
   }
 
   diceRoll() {
-    console.log('Dice rolled');
+    // for Console log
+    let activePlayerVar = Number(this.state.activePlayer) + 1;
+
     // 1. Random number
     const dice = Math.floor(Math.random() * 6) + 1;
 
     //2. Update the round score IF the rolled number was NOT a 1
     if (dice !== 1) {
-      //Add score
       let currentRoundScore = this.state.roundScore;
       currentRoundScore += dice;
       this.setState({roundScore: currentRoundScore});
+      console.log(`Player ${activePlayerVar} rolled a ${dice}`);
     } else {
+      console.log(
+        `Player ${activePlayerVar} rolled a ${dice}. Next player's turn.`
+      );
       this.nextPlayer();
     }
   }
