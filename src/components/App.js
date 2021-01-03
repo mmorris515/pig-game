@@ -10,19 +10,13 @@ class App extends React.Component {
     gamePlaying: false,
     moveMade: false,
     diceDisplay: {display: 'none'},
-    player0PanelCss: 'player-0-panel',
-    player1PanelCss: 'player-1-panel',
   };
-
-  componentDidMount() {
-    // this.init();
-  }
 
   init() {
     this.setState({
       scores: [0, 0],
       activePlayer: 0,
-      roundScore: 10,
+      roundScore: 0,
       winningScore: 100,
       moveMade: false,
       gamePlaying: true,
@@ -32,7 +26,12 @@ class App extends React.Component {
   }
 
   hold() {
-    console.log('Hold');
+    const currentScore = this.state.roundScore;
+    const newScore = this.state.scores[this.state.activePlayer] + currentScore;
+    const newScores = this.state.scores.slice();
+    newScores[this.state.activePlayer] = newScore;
+    this.setState({scores: newScores});
+    this.nextPlayer();
   }
 
   nextPlayer() {
@@ -44,8 +43,12 @@ class App extends React.Component {
   }
 
   diceRoll() {
+    if (this.state.gamePlaying === false) {
+      this.init();
+    }
+
     // for Console log
-    let activePlayerVar = Number(this.state.activePlayer) + 1;
+    const activePlayerVar = Number(this.state.activePlayer) + 1;
 
     // 1. Random number
     const dice = Math.floor(Math.random() * 6) + 1;
@@ -70,7 +73,7 @@ class App extends React.Component {
       <div>
         <Original
           scores={this.state.scores}
-          handleHold={this.hold}
+          hold={this.hold.bind(this)}
           diceDisplay={this.state.diceDisplay}
           roundScore={this.state.roundScore}
           activePlayer={this.state.activePlayer}

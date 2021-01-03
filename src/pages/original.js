@@ -66,7 +66,7 @@ class Original extends React.Component {
         <button className="btn-roll" onClick={this.props.diceRoll}>
           <i className="ion-ios-loop"></i>Roll dice
         </button>
-        <button className="btn-hold" onClick={this.props.nextPlayer}>
+        <button className="btn-hold" onClick={this.props.hold}>
           <i className="ion-ios-download-outline"></i>Hold
         </button>
 
