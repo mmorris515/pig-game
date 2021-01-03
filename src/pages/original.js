@@ -26,7 +26,7 @@ class Original extends React.Component {
           }
         >
           <div className="player-name" id="name-0">
-            Player 1
+            {this.props.winner === 0 ? 'Winner!' : 'Player 1'}
           </div>
           <div className="player-score" id="score-0">
             {this.props.scores[0]}
@@ -47,7 +47,7 @@ class Original extends React.Component {
           }
         >
           <div className="player-name" id="name-1">
-            Player 2
+            {this.props.winner === 1 ? 'Winner!' : 'Player 2'}
           </div>
           <div className="player-score" id="score-1">
             {this.props.scores[1]}

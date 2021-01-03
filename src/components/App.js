@@ -8,8 +8,9 @@ class App extends React.Component {
     activePlayer: null,
     roundScore: 0,
     gamePlaying: false,
-    moveMade: false,
     diceDisplay: {display: 'none'},
+    winningScore: 20,
+    winner: null,
   };
 
   init() {
@@ -17,12 +18,21 @@ class App extends React.Component {
       scores: [0, 0],
       activePlayer: 0,
       roundScore: 0,
-      winningScore: 100,
-      moveMade: false,
       gamePlaying: true,
       diceDisplay: {display: 'none'},
+      winner: null,
     });
     console.log('New game started');
+  }
+
+  endGame() {
+    console.log('Winner!');
+    this.setState({
+      gamePlaying: false,
+      activePlayer: null,
+      winner: this.state.activePlayer,
+      roundScore: 0,
+    });
   }
 
   hold() {
@@ -31,15 +41,21 @@ class App extends React.Component {
     const newScores = this.state.scores.slice();
     newScores[this.state.activePlayer] = newScore;
     this.setState({scores: newScores});
-    this.nextPlayer();
+    if (newScore < this.state.winningScore) {
+      this.nextPlayer();
+    } else {
+      this.endGame();
+    }
   }
 
   nextPlayer() {
-    this.state.activePlayer === 0
-      ? this.setState({activePlayer: 1})
-      : this.setState({activePlayer: 0});
-    this.setState({roundScore: 0});
-    console.log('Next Player');
+    if (this.state.gamePlaying === true) {
+      this.state.activePlayer === 0
+        ? this.setState({activePlayer: 1})
+        : this.setState({activePlayer: 0});
+      this.setState({roundScore: 0});
+      console.log('Next Player');
+    }
   }
 
   diceRoll() {
@@ -80,6 +96,7 @@ class App extends React.Component {
           init={this.init.bind(this)}
           nextPlayer={this.nextPlayer.bind(this)}
           diceRoll={this.diceRoll.bind(this)}
+          winner={this.state.winner}
         />
       </div>
     );
