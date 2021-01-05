@@ -9,7 +9,7 @@ class App extends React.Component {
     roundScore: 0,
     gamePlaying: false,
     diceDisplay: {display: 'none'},
-    winningScore: 20,
+    winningScore: 50,
     winner: null,
   };
 
@@ -19,7 +19,7 @@ class App extends React.Component {
       activePlayer: 0,
       roundScore: 0,
       gamePlaying: true,
-      diceDisplay: {display: 'none'},
+      diceDisplay: {display: 'block'},
       winner: null,
     });
     console.log('New game started');
@@ -49,36 +49,39 @@ class App extends React.Component {
   }
 
   nextPlayer() {
-    if (this.state.gamePlaying === true) {
-      this.state.activePlayer === 0
-        ? this.setState({activePlayer: 1})
-        : this.setState({activePlayer: 0});
-      this.setState({roundScore: 0});
-      console.log('Next Player');
+    if (this.state.activePlayer === 0 || this.state.activePlayer === null) {
+      this.setState({activePlayer: 1});
     }
+    if (this.state.activePlayer === 1) {
+      this.setState({activePlayer: 0});
+    }
+    this.setState({roundScore: 0});
+    console.log('Next Player');
   }
 
   diceRoll() {
+    console.log('Roll');
+
     if (this.state.gamePlaying === false) {
       this.init();
     }
 
-    // for Console log
-    const activePlayerVar = Number(this.state.activePlayer) + 1;
-
-    // 1. Random number
+    // Random number
     const dice = Math.floor(Math.random() * 6) + 1;
 
-    //2. Update the round score IF the rolled number was NOT a 1
+    // for Console log of player roll
+    const activePlayerVar = Number(this.state.activePlayer) + 1;
+
+    // Update the round score IF the rolled number was NOT a 1
     if (dice !== 1) {
       let currentRoundScore = this.state.roundScore;
       currentRoundScore += dice;
       this.setState({roundScore: currentRoundScore});
       console.log(`Player ${activePlayerVar} rolled a ${dice}`);
-    } else {
-      console.log(
-        `Player ${activePlayerVar} rolled a ${dice}. Next player's turn.`
-      );
+    }
+
+    if (dice === 1) {
+      console.log(`Player ${activePlayerVar} rolled a ${dice}`);
       this.nextPlayer();
     }
   }
