@@ -198,3 +198,23 @@ i {
   font-weight: 300;
   color: #eb4d4d;
 }
+
+/* New styles */
+
+#wrong-move-icon {
+  position: absolute;
+  left: 50.75%;
+  top: 52.5px;
+  transform: translateX(-50%);
+}
+#wrong-move-icon i {
+  font-size: 350px;
+  opacity: 0.5;
+  color: #dcdcdc;
+}
+#wrong-move-text {
+  position: absolute;
+  left: 50.75%;
+  top: 300px;
+  transform: translateX(-50%);
+}

@@ -13,6 +13,7 @@ GAME RULES:
 
 import React from 'react';
 import Dice from '../components/Dice.js';
+import WrongMove from '../components/WrongMove.js';
 import dice1 from '../images/dice1.png';
 import dice2 from '../images/dice2.png';
 import dice3 from '../images/dice3.png';
@@ -89,6 +90,8 @@ class Original extends React.Component {
           diceDisplay={this.props.diceDisplay}
           src={images[this.props.bottomDice - 1]}
         />
+
+        <WrongMove wrongMoveText={this.props.wrongMoveText} />
       </div>
     );
   }

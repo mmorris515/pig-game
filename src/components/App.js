@@ -118,6 +118,7 @@ class App extends React.Component {
 
   // Final rendered app
   render() {
+    let wrongMoveText = 'Testing 1..2..3..';
     return (
       <div>
         <Original
@@ -132,6 +133,7 @@ class App extends React.Component {
           winner={this.state.winner}
           topDice={this.state.topDice}
           bottomDice={this.state.bottomDice}
+          wrongMoveText={wrongMoveText}
         />
       </div>
     );
