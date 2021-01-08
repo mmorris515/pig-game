@@ -40,12 +40,14 @@ class App extends React.Component {
   }
 
   hold() {
-    const currentScore = this.state.roundScore;
-    const newScore = this.state.scores[this.state.activePlayer] + currentScore;
-    const newScores = this.state.scores.slice();
-    newScores[this.state.activePlayer] = newScore;
+    const currentRoundScore = this.state.roundScore;
+    const newPlayerScore =
+      this.state.scores[this.state.activePlayer] + currentRoundScore;
+    const newScores = this.state.scores;
+    newScores[this.state.activePlayer] = newPlayerScore;
     this.setState({scores: newScores});
-    if (newScore < this.state.winningScore) {
+    if (newPlayerScore < this.state.winningScore) {
+      this.setState({roundScore: 0});
       this.nextPlayer();
     } else {
       this.endGame();
@@ -80,17 +82,37 @@ class App extends React.Component {
     // for Console log of player roll
     const activePlayerVar = Number(this.state.activePlayer) + 1;
 
-    // Update the round score IF the rolled number was NOT a 1
-    if (topDice !== 1) {
+    // Update the round score if player holds and neither dice is a 1
+    if (topDice !== 1 && bottomDice !== 1) {
       let currentRoundScore = this.state.roundScore;
-      currentRoundScore += topDice;
+      let totalRoundScore = topDice + bottomDice;
+      currentRoundScore += totalRoundScore;
       this.setState({roundScore: currentRoundScore});
-      console.log(`Player ${activePlayerVar} rolled a ${topDice}`);
+      console.log(
+        `Player ${activePlayerVar} rolled a ${topDice} and a ${bottomDice}`
+      );
     }
 
-    if (topDice === 1) {
-      console.log(`Player ${activePlayerVar} rolled a ${topDice}`);
+    // Update the round score if player holds and one of the dice is a 1
+    if (
+      (topDice === 1 && bottomDice !== 1) ||
+      (bottomDice === 1 && topDice !== 1)
+    ) {
+      console.log(
+        `Player ${activePlayerVar} rolled a ${topDice} and a ${bottomDice}`
+      );
       this.nextPlayer();
+    }
+
+    // Update the round score if player rolls snake eyes
+    if (topDice === 1 && bottomDice === 1) {
+      this.setState({roundScore: 0});
+      const newPlayerScore = 0;
+      const newScores = this.state.scores;
+      newScores[this.state.activePlayer] = newPlayerScore;
+      this.setState({scores: newScores});
+      this.nextPlayer();
+      console.log(`Snake eyes! Player ${activePlayerVar} loses their score`);
     }
   }
 

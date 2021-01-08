@@ -22,7 +22,6 @@ import dice6 from '../images/dice6.png';
 
 class Original extends React.Component {
   render() {
-    let topDice = this.props.topDice;
     const images = [dice1, dice2, dice3, dice4, dice5, dice6];
     return (
       <div className="wrapper clearfix">
