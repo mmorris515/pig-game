@@ -11,6 +11,8 @@ class App extends React.Component {
     diceDisplay: {display: 'none'},
     winningScore: 50,
     winner: null,
+    topDice: null,
+    bottomDice: null,
   };
 
   init() {
@@ -21,6 +23,8 @@ class App extends React.Component {
       gamePlaying: true,
       diceDisplay: {display: 'block'},
       winner: null,
+      topDice: null,
+      bottomDice: null,
     });
     console.log('New game started');
   }
@@ -67,21 +71,25 @@ class App extends React.Component {
     }
 
     // Random number
-    const dice = Math.floor(Math.random() * 6) + 1;
+    const topDice = Math.floor(Math.random() * 6) + 1;
+    this.setState({topDice: topDice});
+
+    const bottomDice = Math.floor(Math.random() * 6) + 1;
+    this.setState({bottomDice: bottomDice});
 
     // for Console log of player roll
     const activePlayerVar = Number(this.state.activePlayer) + 1;
 
     // Update the round score IF the rolled number was NOT a 1
-    if (dice !== 1) {
+    if (topDice !== 1) {
       let currentRoundScore = this.state.roundScore;
-      currentRoundScore += dice;
+      currentRoundScore += topDice;
       this.setState({roundScore: currentRoundScore});
-      console.log(`Player ${activePlayerVar} rolled a ${dice}`);
+      console.log(`Player ${activePlayerVar} rolled a ${topDice}`);
     }
 
-    if (dice === 1) {
-      console.log(`Player ${activePlayerVar} rolled a ${dice}`);
+    if (topDice === 1) {
+      console.log(`Player ${activePlayerVar} rolled a ${topDice}`);
       this.nextPlayer();
     }
   }
@@ -100,6 +108,8 @@ class App extends React.Component {
           nextPlayer={this.nextPlayer.bind(this)}
           diceRoll={this.diceRoll.bind(this)}
           winner={this.state.winner}
+          topDice={this.state.topDice}
+          bottomDice={this.state.bottomDice}
         />
       </div>
     );

@@ -13,9 +13,17 @@ GAME RULES:
 
 import React from 'react';
 import Dice from '../components/Dice.js';
+import dice1 from '../images/dice1.png';
+import dice2 from '../images/dice2.png';
+import dice3 from '../images/dice3.png';
+import dice4 from '../images/dice4.png';
+import dice5 from '../images/dice5.png';
+import dice6 from '../images/dice6.png';
 
 class Original extends React.Component {
   render() {
+    let topDice = this.props.topDice;
+    const images = [dice1, dice2, dice3, dice4, dice5, dice6];
     return (
       <div className="wrapper clearfix">
         <div
@@ -72,12 +80,16 @@ class Original extends React.Component {
 
         <input type="text" placeholder="Final score" className="final-score" />
 
-        {/*
-        <img src={dice} alt="Dice" className="dice" id="dice-1" />
-        <img src={dice} alt="Dice" className="dice" id="dice-2" />
-        */}
-        <Dice diceId="dice-1" diceDisplay={this.props.diceDisplay} />
-        <Dice diceId="dice-2" diceDisplay={this.props.diceDisplay} />
+        <Dice
+          diceId="dice-1"
+          diceDisplay={this.props.diceDisplay}
+          src={images[this.props.topDice - 1]}
+        />
+        <Dice
+          diceId="dice-2"
+          diceDisplay={this.props.diceDisplay}
+          src={images[this.props.bottomDice - 1]}
+        />
       </div>
     );
   }

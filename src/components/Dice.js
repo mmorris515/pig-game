@@ -1,16 +1,17 @@
 import React from 'react';
-import dice from '../images/dice-5.png';
 
-const Dice = ({diceDisplay, diceId}) => {
+const Dice = ({diceDisplay, diceId, src}) => {
   return (
     <img
       className="dice"
-      src={dice}
       alt="dice"
       id={diceId}
       style={diceDisplay}
+      src={src}
     ></img>
   );
 };
+
+// Need function to convert topDice variable to topDiceImg for import function below
 
 export default Dice;
