@@ -91,7 +91,10 @@ class Original extends React.Component {
           src={images[this.props.bottomDice - 1]}
         />
 
-        <WrongMove wrongMoveText={this.props.wrongMoveText} />
+        <WrongMove
+          wrongMoveDisplay={this.props.wrongMoveDisplay}
+          wrongMoveText={this.props.wrongMoveText}
+        />
       </div>
     );
   }

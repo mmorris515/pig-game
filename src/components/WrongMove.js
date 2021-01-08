@@ -1,8 +1,8 @@
 import React from 'react';
 
-const WrongMove = ({wrongMoveText}) => {
+const WrongMove = ({wrongMoveDisplay, wrongMoveText}) => {
   return (
-    <div>
+    <div style={wrongMoveDisplay}>
       <div id="wrong-move-icon">
         <i className="ion-ios-close-empty"></i>
       </div>

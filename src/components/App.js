@@ -9,6 +9,8 @@ class App extends React.Component {
     roundScore: 0,
     gamePlaying: false,
     diceDisplay: {display: 'none'},
+    wrongMoveDisplay: {display: 'none'},
+    wrongMoveText: null,
     winningScore: 50,
     winner: null,
     topDice: null,
@@ -93,14 +95,15 @@ class App extends React.Component {
       );
     }
 
-    // Update the round score if player holds and one of the dice is a 1
+    // Update the round score if player rolls a single 1
     if (
       (topDice === 1 && bottomDice !== 1) ||
       (bottomDice === 1 && topDice !== 1)
     ) {
-      console.log(
-        `Player ${activePlayerVar} rolled a ${topDice} and a ${bottomDice}`
-      );
+      this.setState({
+        wrongMoveDisplay: {display: 'block'},
+        wrongMoveText: `Player ${activePlayerVar} rolled a ${topDice} and a ${bottomDice}`,
+      });
       this.nextPlayer();
     }
 
@@ -110,15 +113,17 @@ class App extends React.Component {
       const newPlayerScore = 0;
       const newScores = this.state.scores;
       newScores[this.state.activePlayer] = newPlayerScore;
-      this.setState({scores: newScores});
+      this.setState({
+        scores: newScores,
+        wrongMoveDisplay: {display: 'block'},
+        wrongMoveText: `Snake eyes! Player ${activePlayerVar} loses their score`,
+      });
       this.nextPlayer();
-      console.log(`Snake eyes! Player ${activePlayerVar} loses their score`);
     }
   }
 
   // Final rendered app
   render() {
-    let wrongMoveText = 'Testing 1..2..3..';
     return (
       <div>
         <Original
@@ -133,7 +138,8 @@ class App extends React.Component {
           winner={this.state.winner}
           topDice={this.state.topDice}
           bottomDice={this.state.bottomDice}
-          wrongMoveText={wrongMoveText}
+          wrongMoveText={this.state.wrongMoveText}
+          wrongMoveDisplay={this.state.wrongMoveDisplay}
         />
       </div>
     );
