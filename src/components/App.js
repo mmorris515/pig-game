@@ -1,6 +1,6 @@
 import React from 'react';
 import Original from '../pages/original.js';
-import '../styles/style-original.css';
+import '../styles/style.css';
 
 class App extends React.Component {
   state = {
@@ -10,7 +10,8 @@ class App extends React.Component {
     gamePlaying: false,
     diceDisplay: {display: 'none'},
     wrongMoveDisplay: {display: 'none'},
-    wrongMoveText: null,
+    statusTextDisplay: {display: 'none'},
+    statusText: null,
     winningScore: 50,
     winner: null,
     topDice: null,
@@ -27,8 +28,9 @@ class App extends React.Component {
       winner: null,
       topDice: null,
       bottomDice: null,
+      statusTextDisplay: {display: 'block'},
+      statusText: 'New game',
     });
-    console.log('New game started');
   }
 
   endGame() {
@@ -89,10 +91,12 @@ class App extends React.Component {
       let currentRoundScore = this.state.roundScore;
       let totalRoundScore = topDice + bottomDice;
       currentRoundScore += totalRoundScore;
-      this.setState({roundScore: currentRoundScore});
-      console.log(
-        `Player ${activePlayerVar} rolled a ${topDice} and a ${bottomDice}`
-      );
+      const statusTextVar = `Player ${activePlayerVar} rolled a ${topDice} and a ${bottomDice}`;
+      this.setState({
+        roundScore: currentRoundScore,
+        statusTextDisplay: {display: 'block'},
+        statusText: statusTextVar,
+      });
     }
 
     // Update the round score if player rolls a single 1
@@ -100,9 +104,11 @@ class App extends React.Component {
       (topDice === 1 && bottomDice !== 1) ||
       (bottomDice === 1 && topDice !== 1)
     ) {
+      const statusTextVar = `Player ${activePlayerVar} rolled a ${topDice} and a ${bottomDice}`;
       this.setState({
         wrongMoveDisplay: {display: 'block'},
-        wrongMoveText: `Player ${activePlayerVar} rolled a ${topDice} and a ${bottomDice}`,
+        statusTextDisplay: {display: 'block'},
+        statusText: statusTextVar,
       });
       this.nextPlayer();
     }
@@ -113,10 +119,12 @@ class App extends React.Component {
       const newPlayerScore = 0;
       const newScores = this.state.scores;
       newScores[this.state.activePlayer] = newPlayerScore;
+      const statusTextVar = `Snake eyes! Player ${activePlayerVar} loses their score`;
       this.setState({
         scores: newScores,
         wrongMoveDisplay: {display: 'block'},
-        wrongMoveText: `Snake eyes! Player ${activePlayerVar} loses their score`,
+        statusTextDisplay: {display: 'block'},
+        statusText: statusTextVar,
       });
       this.nextPlayer();
     }
@@ -138,7 +146,8 @@ class App extends React.Component {
           winner={this.state.winner}
           topDice={this.state.topDice}
           bottomDice={this.state.bottomDice}
-          wrongMoveText={this.state.wrongMoveText}
+          statusText={this.state.statusText}
+          statusTextDisplay={this.state.statusTextDisplay}
           wrongMoveDisplay={this.state.wrongMoveDisplay}
         />
       </div>
