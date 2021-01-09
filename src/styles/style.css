@@ -167,6 +167,7 @@ i {
 
 .btn-new {
   top: 50px;
+  z-index: 1000;
 }
 .btn-roll {
   top: 408px;
@@ -205,7 +206,7 @@ i {
   position: absolute;
   left: 50.75%;
   top: 150px;
-  height: 100px;
+  height: 1px;
   transform: translateX(-50%);
 }
 #wrong-move-icon i {

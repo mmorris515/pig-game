@@ -2,7 +2,7 @@ import React from 'react';
 
 const WrongMove = ({wrongMoveDisplay}) => {
   return (
-    <div style={wrongMoveDisplay} id="wrong-move-icon">
+    <div id="wrong-move-icon" style={wrongMoveDisplay}>
       <i className="ion-ios-close-empty"></i>
     </div>
   );

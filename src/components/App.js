@@ -46,7 +46,9 @@ class App extends React.Component {
       winner: null,
       topDice: null,
       bottomDice: null,
+      gamePlaying: false,
       diceDisplay: {display: 'none'},
+      wrongMoveDisplay: {display: 'none'},
       statusText: null,
     });
   }
@@ -56,8 +58,8 @@ class App extends React.Component {
     this.setState({
       gamePlaying: false,
       activePlayer: null,
-      winner: this.state.activePlayer,
       roundScore: 0,
+      winner: this.state.activePlayer,
     });
   }
 
@@ -67,12 +69,14 @@ class App extends React.Component {
       this.state.scores[this.state.activePlayer] + currentRoundScore;
     const newScores = this.state.scores;
     newScores[this.state.activePlayer] = newPlayerScore;
-    this.setState({scores: newScores});
+    this.setState({scores: newScores, statusText: null});
     if (newPlayerScore < this.state.winningScore) {
       this.setState({roundScore: 0});
       this.nextPlayer();
     } else {
       this.endGame();
+      let gameWinner = this.state.activePlayer + 1;
+      this.setState({statusText: `Player ${gameWinner} wins!`});
     }
   }
 
@@ -89,13 +93,14 @@ class App extends React.Component {
 
   diceRoll() {
     console.log('Roll');
-    this.setState({
-      wrongMoveDisplay: {display: 'none', diceDisplay: {display: 'block'}},
-    });
 
     if (this.state.gamePlaying === false) {
       this.init();
     }
+
+    this.setState({
+      wrongMoveDisplay: {display: 'none'},
+    });
 
     // Random number
     const topDice = Math.floor(Math.random() * 6) + 1;
