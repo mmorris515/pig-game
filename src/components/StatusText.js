@@ -1,7 +1,7 @@
 import React from 'react';
 
 const StatusText = ({statusText}) => {
-  return <div id="status-text">{statusText}</div>;
+  return <span id="status-text">{statusText}</span>;
 };
 
 export default StatusText;

@@ -2,6 +2,13 @@ import React from 'react';
 import Original from '../pages/original.js';
 import '../styles/style.css';
 
+var converter = require('number-to-words');
+
+const capitalize = (s) => {
+  if (typeof s !== 'string') return '';
+  return s.charAt(0).toUpperCase() + s.slice(1);
+};
+
 class App extends React.Component {
   state = {
     scores: [0, 0],
@@ -24,12 +31,23 @@ class App extends React.Component {
       activePlayer: 0,
       roundScore: 0,
       gamePlaying: true,
-      diceDisplay: {display: 'block'},
       winner: null,
       topDice: null,
       bottomDice: null,
-      statusTextDisplay: {display: 'block'},
-      statusText: 'New game',
+      diceDisplay: {display: 'block'},
+    });
+  }
+
+  newGame() {
+    this.setState({
+      scores: [0, 0],
+      activePlayer: 0,
+      roundScore: 0,
+      winner: null,
+      topDice: null,
+      bottomDice: null,
+      diceDisplay: {display: 'none'},
+      statusText: null,
     });
   }
 
@@ -71,6 +89,9 @@ class App extends React.Component {
 
   diceRoll() {
     console.log('Roll');
+    this.setState({
+      wrongMoveDisplay: {display: 'none', diceDisplay: {display: 'block'}},
+    });
 
     if (this.state.gamePlaying === false) {
       this.init();
@@ -84,14 +105,16 @@ class App extends React.Component {
     this.setState({bottomDice: bottomDice});
 
     // for Console log of player roll
-    const activePlayerVar = Number(this.state.activePlayer) + 1;
+    const activePlayerVar = capitalize(
+      converter.toWords(Number(this.state.activePlayer) + 1)
+    );
 
     // Update the round score if player holds and neither dice is a 1
     if (topDice !== 1 && bottomDice !== 1) {
       let currentRoundScore = this.state.roundScore;
-      let totalRoundScore = topDice + bottomDice;
-      currentRoundScore += totalRoundScore;
-      const statusTextVar = `Player ${activePlayerVar} rolled a ${topDice} and a ${bottomDice}`;
+      let roll = topDice + bottomDice;
+      currentRoundScore += roll;
+      const statusTextVar = `Player ${activePlayerVar} rolled ${roll}.`;
       this.setState({
         roundScore: currentRoundScore,
         statusTextDisplay: {display: 'block'},
@@ -104,7 +127,12 @@ class App extends React.Component {
       (topDice === 1 && bottomDice !== 1) ||
       (bottomDice === 1 && topDice !== 1)
     ) {
-      const statusTextVar = `Player ${activePlayerVar} rolled a ${topDice} and a ${bottomDice}`;
+      let statusTextVar = null;
+      if (this.state.roundScore === 0) {
+        statusTextVar = `Player ${activePlayerVar} rolled a 1. Next player.`;
+      } else {
+        statusTextVar = `Player ${activePlayerVar} rolled a 1. Round score erased.`;
+      }
       this.setState({
         wrongMoveDisplay: {display: 'block'},
         statusTextDisplay: {display: 'block'},
@@ -119,7 +147,7 @@ class App extends React.Component {
       const newPlayerScore = 0;
       const newScores = this.state.scores;
       newScores[this.state.activePlayer] = newPlayerScore;
-      const statusTextVar = `Snake eyes! Player ${activePlayerVar} loses their score`;
+      const statusTextVar = `Snake eyes! Player ${activePlayerVar} score erased`;
       this.setState({
         scores: newScores,
         wrongMoveDisplay: {display: 'block'},
@@ -149,6 +177,7 @@ class App extends React.Component {
           statusText={this.state.statusText}
           statusTextDisplay={this.state.statusTextDisplay}
           wrongMoveDisplay={this.state.wrongMoveDisplay}
+          newGame={this.newGame.bind(this)}
         />
       </div>
     );
