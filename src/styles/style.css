@@ -22,13 +22,6 @@
   outline: none;
 }
 
-#dice-1 {
-  top: 120px;
-}
-#dice-2 {
-  top: 250px;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -173,13 +166,13 @@ i {
 }
 
 .btn-new {
-  top: 45px;
+  top: 50px;
 }
 .btn-roll {
-  top: 403px;
+  top: 408px;
 }
 .btn-hold {
-  top: 467px;
+  top: 472px;
 }
 
 .dice {
@@ -189,6 +182,13 @@ i {
   transform: translateX(-50%);
   height: 100px;
   box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.1);
+}
+
+#dice-1 {
+  top: 110px;
+}
+#dice-2 {
+  top: 235px;
 }
 
 .winner {
@@ -204,17 +204,19 @@ i {
 #wrong-move-icon {
   position: absolute;
   left: 50.75%;
-  top: 52.5px;
+  top: 150px;
+  height: 100px;
   transform: translateX(-50%);
 }
 #wrong-move-icon i {
   font-size: 350px;
   opacity: 0.5;
   color: #dcdcdc;
+  transform: translateY(-103px);
 }
-#wrong-move-text {
+#status-text {
   position: absolute;
   left: 50.75%;
-  top: 300px;
+  top: 363px;
   transform: translateX(-50%);
 }
