@@ -27,6 +27,7 @@ class App extends React.Component {
     bottomDice: null,
     gameStatusText: null,
     rollCount: 0,
+    formVisibility: {visibility: 'visible'},
   };
 
   init() {
@@ -66,6 +67,7 @@ class App extends React.Component {
       activePlayer: null,
       roundScore: 0,
       winner: this.state.activePlayer,
+      formVisibility: {visibility: 'visible'},
     });
   }
 
@@ -108,7 +110,10 @@ class App extends React.Component {
   diceRoll() {
     console.log('Roll');
 
-    this.setState({diceDisplay: {display: 'block'}});
+    this.setState({
+      diceDisplay: {display: 'block'},
+      formVisibility: {visibility: 'hidden'},
+    });
 
     if (this.state.gamePlaying === false) {
       this.init();
@@ -207,6 +212,7 @@ class App extends React.Component {
           wrongMoveDisplay={this.state.wrongMoveDisplay}
           newGame={this.newGame.bind(this)}
           gameStatusText={this.state.gameStatusText}
+          formVisibility={this.state.formVisibility}
         />
       </div>
     );

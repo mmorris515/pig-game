@@ -80,7 +80,7 @@ class Original extends React.Component {
           <i className="ion-ios-download-outline"></i>Hold
         </button>
 
-        <FinalScoreForm />
+        <FinalScoreForm formVisibility={this.props.formVisibility} />
 
         <Dice
           diceId="dice-1"
