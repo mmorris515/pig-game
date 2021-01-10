@@ -15,6 +15,7 @@ import React from 'react';
 import Dice from '../components/Dice.js';
 import WrongMove from '../components/WrongMove.js';
 import StatusText from '../components/StatusText.js';
+import FinalScoreForm from '../components/FinalScoreForm.js';
 import dice1 from '../images/dice1.png';
 import dice2 from '../images/dice2.png';
 import dice3 from '../images/dice3.png';
@@ -79,7 +80,7 @@ class Original extends React.Component {
           <i className="ion-ios-download-outline"></i>Hold
         </button>
 
-        <input type="text" placeholder="Final score" className="final-score" />
+        <FinalScoreForm />
 
         <Dice
           diceId="dice-1"
@@ -96,7 +97,15 @@ class Original extends React.Component {
 
         <StatusText
           style={this.props.statusTextDisplay}
+          statusText={this.props.gameStatusText}
+          className="status-text"
+          id="game-status-text"
+        />
+
+        <StatusText
+          style={this.props.statusTextDisplay}
           statusText={this.props.statusText}
+          className="status-text"
         />
       </div>
     );

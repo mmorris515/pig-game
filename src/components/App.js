@@ -1,8 +1,10 @@
 import React from 'react';
 import Original from '../pages/original.js';
 import '../styles/style.css';
+import FinalScoreForm from '../components/FinalScoreForm.js';
 
 var converter = require('number-to-words');
+let rollCount = 0;
 
 const capitalize = (s) => {
   if (typeof s !== 'string') return '';
@@ -23,6 +25,8 @@ class App extends React.Component {
     winner: null,
     topDice: null,
     bottomDice: null,
+    gameStatusText: null,
+    rollCount: 0,
   };
 
   init() {
@@ -35,6 +39,7 @@ class App extends React.Component {
       topDice: null,
       bottomDice: null,
       diceDisplay: {display: 'block'},
+      gameStatusText: 'First to 50 points wins the game',
     });
   }
 
@@ -50,6 +55,7 @@ class App extends React.Component {
       diceDisplay: {display: 'none'},
       wrongMoveDisplay: {display: 'none'},
       statusText: null,
+      gameStatusText: 'First to 50 points wins the game',
     });
   }
 
@@ -69,7 +75,12 @@ class App extends React.Component {
       this.state.scores[this.state.activePlayer] + currentRoundScore;
     const newScores = this.state.scores;
     newScores[this.state.activePlayer] = newPlayerScore;
-    this.setState({scores: newScores, statusText: null});
+    this.setState({
+      scores: newScores,
+      statusText: null,
+      wrongMoveDisplay: {display: 'none'},
+      diceDisplay: {display: 'none'},
+    });
     if (newPlayerScore < this.state.winningScore) {
       this.setState({roundScore: 0});
       this.nextPlayer();
@@ -87,19 +98,31 @@ class App extends React.Component {
     if (this.state.activePlayer === 1) {
       this.setState({activePlayer: 0});
     }
-    this.setState({roundScore: 0});
+    this.setState({
+      roundScore: 0,
+      gameStatusText: null,
+    });
     console.log('Next Player');
   }
 
   diceRoll() {
     console.log('Roll');
 
+    this.setState({diceDisplay: {display: 'block'}});
+
     if (this.state.gamePlaying === false) {
       this.init();
     }
 
+    if (this.state.rollCount > 0) {
+      this.setState({gameStatusText: null});
+    }
+
+    rollCount = rollCount + 1;
+
     this.setState({
       wrongMoveDisplay: {display: 'none'},
+      rollCount: rollCount,
     });
 
     // Random number
@@ -183,6 +206,7 @@ class App extends React.Component {
           statusTextDisplay={this.state.statusTextDisplay}
           wrongMoveDisplay={this.state.wrongMoveDisplay}
           newGame={this.newGame.bind(this)}
+          gameStatusText={this.state.gameStatusText}
         />
       </div>
     );

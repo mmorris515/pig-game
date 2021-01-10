@@ -16,6 +16,7 @@
   padding: 10px;
   width: 160px;
   text-transform: uppercase;
+  z-index: 9999;
 }
 
 .final-score:focus {
@@ -166,7 +167,7 @@ i {
 }
 
 .btn-new {
-  top: 50px;
+  top: 20px;
   z-index: 1000;
 }
 .btn-roll {
@@ -215,9 +216,13 @@ i {
   color: #dcdcdc;
   transform: translateY(-103px);
 }
-#status-text {
+.status-text {
   position: absolute;
-  left: 50.75%;
+  left: 50%;
   top: 363px;
   transform: translateX(-50%);
+}
+
+#game-status-text {
+  top: 70px;
 }
