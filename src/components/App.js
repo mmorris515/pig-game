@@ -1,7 +1,6 @@
 import React from 'react';
 import Original from '../pages/original.js';
 import '../styles/style.css';
-import FinalScoreForm from '../components/FinalScoreForm.js';
 
 var converter = require('number-to-words');
 let rollCount = 0;
@@ -28,6 +27,7 @@ class App extends React.Component {
     gameStatusText: null,
     rollCount: 0,
     formVisibility: {visibility: 'visible'},
+    formInput: '',
   };
 
   init() {
@@ -69,6 +69,15 @@ class App extends React.Component {
       winner: this.state.activePlayer,
       formVisibility: {visibility: 'visible'},
     });
+  }
+
+  onFormChange(event) {
+    this.setState({formInput: event});
+  }
+
+  onFormSubmit() {
+    alert('Winning score set to: ' + this.state.formInput);
+    // this.props.init();
   }
 
   hold() {
@@ -213,6 +222,9 @@ class App extends React.Component {
           newGame={this.newGame.bind(this)}
           gameStatusText={this.state.gameStatusText}
           formVisibility={this.state.formVisibility}
+          onFormChange={this.onFormChange.bind(this)}
+          onFormSubmit={this.onFormSubmit.bind(this)}
+          formInput={this.state.formInput}
         />
       </div>
     );
