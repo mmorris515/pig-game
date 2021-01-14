@@ -82,11 +82,12 @@ class Original extends React.Component {
 
         <FinalScoreForm
           formVisibility={this.props.formVisibility}
+          formDisabled={this.props.formDisabled}
           init={this.props.init}
-          diceDisplay={this.props.diceDisplay}
           onFormChange={this.props.onFormChange}
           onFormSubmit={this.props.onFormSubmit}
           formInput={this.props.formInput}
+          winningScore={this.props.winningScore}
         />
 
         <Dice
@@ -103,14 +104,13 @@ class Original extends React.Component {
         <WrongMove wrongMoveDisplay={this.props.wrongMoveDisplay} />
 
         <StatusText
-          style={this.props.statusTextDisplay}
+          style={this.props.gameStatusTextDisplay}
           statusText={this.props.gameStatusText}
           className="status-text"
           id="game-status-text"
         />
 
         <StatusText
-          style={this.props.statusTextDisplay}
           statusText={this.props.statusText}
           className="status-text"
         />

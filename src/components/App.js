@@ -18,16 +18,18 @@ class App extends React.Component {
     gamePlaying: false,
     diceDisplay: {display: 'none'},
     wrongMoveDisplay: {display: 'none'},
-    statusTextDisplay: {display: 'none'},
     statusText: null,
     winningScore: 50,
     winner: null,
     topDice: null,
     bottomDice: null,
     gameStatusText: null,
+    gameStatusTextDisplay: {display: 'block'},
     rollCount: 0,
     formVisibility: {visibility: 'visible'},
     formInput: '',
+    formDisabled: '',
+    scoreToWin: 50,
   };
 
   init() {
@@ -72,11 +74,17 @@ class App extends React.Component {
   }
 
   onFormChange(event) {
-    this.setState({formInput: event});
+    this.setState({formInput: event, formValue: event});
   }
 
   onFormSubmit() {
-    alert('Winning score set to: ' + this.state.formInput);
+    let newScoreToWin = this.state.formInput;
+    let newGameStatusText = 'First to ' + newScoreToWin + ' wins the game';
+    this.setState({
+      winningScore: newScoreToWin,
+      gameStatusText: newGameStatusText,
+      formDisabled: 'disabled',
+    });
     // this.props.init();
   }
 
@@ -159,7 +167,6 @@ class App extends React.Component {
       const statusTextVar = `Player ${activePlayerVar} rolled ${roll}.`;
       this.setState({
         roundScore: currentRoundScore,
-        statusTextDisplay: {display: 'block'},
         statusText: statusTextVar,
       });
     }
@@ -177,7 +184,6 @@ class App extends React.Component {
       }
       this.setState({
         wrongMoveDisplay: {display: 'block'},
-        statusTextDisplay: {display: 'block'},
         statusText: statusTextVar,
       });
       this.nextPlayer();
@@ -193,7 +199,6 @@ class App extends React.Component {
       this.setState({
         scores: newScores,
         wrongMoveDisplay: {display: 'block'},
-        statusTextDisplay: {display: 'block'},
         statusText: statusTextVar,
       });
       this.nextPlayer();
@@ -217,14 +222,16 @@ class App extends React.Component {
           topDice={this.state.topDice}
           bottomDice={this.state.bottomDice}
           statusText={this.state.statusText}
-          statusTextDisplay={this.state.statusTextDisplay}
           wrongMoveDisplay={this.state.wrongMoveDisplay}
           newGame={this.newGame.bind(this)}
           gameStatusText={this.state.gameStatusText}
+          gameStatusTextDisplay={this.state.gameStatusTextDisplay}
           formVisibility={this.state.formVisibility}
           onFormChange={this.onFormChange.bind(this)}
           onFormSubmit={this.onFormSubmit.bind(this)}
           formInput={this.state.formInput}
+          formDisabled={this.state.formDisabled}
+          winningScore={this.state.winningScore}
         />
       </div>
     );

@@ -13,21 +13,21 @@ class FinalScoreForm extends React.Component {
     this.props.onFormChange(event.target.value);
   }
 
-  handleSubmit() {
+  handleSubmit(event) {
     this.props.onFormSubmit();
-    alert('Winning score set to: ' + this.props.formInput);
+    event.preventDefault();
+    const newWinningScore = this.props.formInput;
+    console.log(`Score to win: ${newWinningScore}`);
   }
 
   render() {
-    const formInput = this.props.formInput;
-    console.log(this.props.formInput);
     return (
       <form onSubmit={this.handleSubmit}>
         <input
           placeholder="Final score"
           className="final-score"
           onChange={this.handleChange}
-          value={formInput}
+          disabled={this.props.formDisabled}
         />
       </form>
     );
