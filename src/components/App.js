@@ -23,7 +23,7 @@ class App extends React.Component {
     winner: null,
     topDice: null,
     bottomDice: null,
-    gameStatusText: null,
+    gameStatusText: 'First to 50 points wins the game',
     gameStatusTextDisplay: {display: 'block'},
     rollCount: 0,
     formVisibility: {visibility: 'visible'},
@@ -33,7 +33,18 @@ class App extends React.Component {
     scoreToWin: 50,
   };
 
+  updateGameStatus() {
+    // update game status text with points to win game
+    let newScoreToWin = this.state.winningScore;
+    let newGameStatusText =
+      'First to ' + newScoreToWin + ' points wins the game';
+    this.setState({
+      gameStatusText: newGameStatusText,
+    });
+  }
+
   init() {
+    this.updateGameStatus();
     this.setState({
       scores: [0, 0],
       activePlayer: 0,
@@ -43,12 +54,13 @@ class App extends React.Component {
       topDice: null,
       bottomDice: null,
       diceDisplay: {display: 'block'},
-      gameStatusText: 'First to 50 points wins the game',
       holdDisabled: '',
+      formDisabled: 'disabled',
     });
   }
 
   newGame() {
+    this.updateGameStatus();
     this.setState({
       scores: [0, 0],
       activePlayer: 0,
@@ -60,7 +72,7 @@ class App extends React.Component {
       diceDisplay: {display: 'none'},
       wrongMoveDisplay: {display: 'none'},
       statusText: null,
-      gameStatusText: 'First to 50 points wins the game',
+      formDisabled: '',
     });
   }
 
@@ -72,6 +84,8 @@ class App extends React.Component {
       roundScore: 0,
       winner: this.state.activePlayer,
       formVisibility: {visibility: 'visible'},
+      formDisabled: '',
+      holdDisabled: 'disabled',
     });
   }
 
@@ -81,13 +95,21 @@ class App extends React.Component {
 
   onFormSubmit() {
     let newScoreToWin = this.state.formInput;
-    let newGameStatusText = 'First to ' + newScoreToWin + ' wins the game';
+    let newGameStatusText =
+      'First to ' + newScoreToWin + ' points wins the game';
     this.setState({
       winningScore: newScoreToWin,
       gameStatusText: newGameStatusText,
       formDisabled: 'disabled',
+      scores: [0, 0],
+      activePlayer: 0,
+      roundScore: 0,
+      gamePlaying: true,
+      winner: null,
+      topDice: null,
+      bottomDice: null,
+      holdDisabled: '',
     });
-    // this.props.init();
   }
 
   hold() {
