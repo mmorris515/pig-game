@@ -29,6 +29,7 @@ class App extends React.Component {
     formVisibility: {visibility: 'visible'},
     formInput: '',
     formDisabled: '',
+    holdDisabled: 'disabled',
     scoreToWin: 50,
   };
 
@@ -43,6 +44,7 @@ class App extends React.Component {
       bottomDice: null,
       diceDisplay: {display: 'block'},
       gameStatusText: 'First to 50 points wins the game',
+      holdDisabled: '',
     });
   }
 
@@ -231,6 +233,7 @@ class App extends React.Component {
           onFormSubmit={this.onFormSubmit.bind(this)}
           formInput={this.state.formInput}
           formDisabled={this.state.formDisabled}
+          holdDisabled={this.state.holdDisabled}
           winningScore={this.state.winningScore}
         />
       </div>
