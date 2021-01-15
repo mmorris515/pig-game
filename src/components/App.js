@@ -2,9 +2,11 @@ import React from 'react';
 import Original from '../pages/original.js';
 import '../styles/style.css';
 
-var converter = require('number-to-words');
+// Used to control game status text display
 let rollCount = 0;
 
+// Used to convert player name from number to capitalized word in diceRoll function
+var converter = require('number-to-words');
 const capitalize = (s) => {
   if (typeof s !== 'string') return '';
   return s.charAt(0).toUpperCase() + s.slice(1);
@@ -17,12 +19,12 @@ class App extends React.Component {
     roundScore: 0,
     gamePlaying: false,
     diceDisplay: {display: 'none'},
+    topDice: null,
+    bottomDice: null,
     wrongMoveDisplay: {display: 'none'},
     statusText: null,
     winningScore: 50,
     winner: null,
-    topDice: null,
-    bottomDice: null,
     gameStatusText: 'First to 50 points wins the game',
     gameStatusTextDisplay: {display: 'block'},
     rollCount: 0,
@@ -43,32 +45,32 @@ class App extends React.Component {
     });
   }
 
-  init() {
-    this.updateGameStatus();
+  reset() {
     this.setState({
       scores: [0, 0],
       activePlayer: 0,
       roundScore: 0,
-      gamePlaying: true,
       winner: null,
-      topDice: null,
-      bottomDice: null,
+    });
+  }
+
+  init() {
+    this.updateGameStatus();
+    this.reset();
+    this.setState({
       diceDisplay: {display: 'block'},
-      holdDisabled: '',
+      gamePlaying: true,
       formDisabled: 'disabled',
+      holdDisabled: '',
     });
   }
 
   newGame() {
     this.updateGameStatus();
+    this.reset();
     this.setState({
-      scores: [0, 0],
-      activePlayer: 0,
-      roundScore: 0,
-      winner: null,
-      topDice: null,
-      bottomDice: null,
       gamePlaying: false,
+      winner: null,
       diceDisplay: {display: 'none'},
       wrongMoveDisplay: {display: 'none'},
       statusText: null,
@@ -106,16 +108,11 @@ class App extends React.Component {
     } else {
       let newGameStatusText =
         'First to ' + newScoreToWin + ' points wins the game';
+      this.reset();
       this.setState({
         winningScore: newScoreToWin,
         gameStatusText: newGameStatusText,
-        scores: [0, 0],
-        activePlayer: 0,
-        roundScore: 0,
         gamePlaying: true,
-        winner: null,
-        topDice: null,
-        bottomDice: null,
       });
     }
   }
@@ -188,7 +185,7 @@ class App extends React.Component {
     const bottomDice = Math.floor(Math.random() * 6) + 1;
     this.setState({bottomDice: bottomDice});
 
-    // for Console log of player roll
+    // for status text of player name
     const activePlayerVar = capitalize(
       converter.toWords(Number(this.state.activePlayer) + 1)
     );

@@ -12,6 +12,4 @@ const Dice = ({diceDisplay, diceId, src}) => {
   );
 };
 
-// Need function to convert topDice variable to topDiceImg for import function below
-
 export default Dice;
