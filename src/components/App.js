@@ -73,6 +73,7 @@ class App extends React.Component {
       wrongMoveDisplay: {display: 'none'},
       statusText: null,
       formDisabled: '',
+      holdDisabled: 'disabled',
     });
   }
 
@@ -95,21 +96,28 @@ class App extends React.Component {
 
   onFormSubmit() {
     let newScoreToWin = this.state.formInput;
-    let newGameStatusText =
-      'First to ' + newScoreToWin + ' points wins the game';
-    this.setState({
-      winningScore: newScoreToWin,
-      gameStatusText: newGameStatusText,
-      formDisabled: 'disabled',
-      scores: [0, 0],
-      activePlayer: 0,
-      roundScore: 0,
-      gamePlaying: true,
-      winner: null,
-      topDice: null,
-      bottomDice: null,
-      holdDisabled: '',
-    });
+    if (this.state.formInput === '') {
+      newScoreToWin = 50;
+    }
+    if (isNaN(this.state.formInput)) {
+      alert(
+        `${this.state.formInput} is not a number. Please enter a number and try again`
+      );
+    } else {
+      let newGameStatusText =
+        'First to ' + newScoreToWin + ' points wins the game';
+      this.setState({
+        winningScore: newScoreToWin,
+        gameStatusText: newGameStatusText,
+        scores: [0, 0],
+        activePlayer: 0,
+        roundScore: 0,
+        gamePlaying: true,
+        winner: null,
+        topDice: null,
+        bottomDice: null,
+      });
+    }
   }
 
   hold() {
@@ -154,6 +162,8 @@ class App extends React.Component {
     this.setState({
       diceDisplay: {display: 'block'},
       formVisibility: {visibility: 'hidden'},
+      formDisabled: 'disabled',
+      holdDisabled: '',
     });
 
     if (this.state.gamePlaying === false) {
