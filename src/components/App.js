@@ -25,7 +25,7 @@ class App extends React.Component {
     statusText: null,
     winningScore: 50,
     winner: null,
-    gameStatusText: 'First to 50 points wins the game',
+    gameStatusText: 'First to 50 points wins the game!',
     gameStatusTextDisplay: {display: 'block'},
     rollCount: 0,
     formVisibility: {visibility: 'visible'},
@@ -39,7 +39,7 @@ class App extends React.Component {
     // update game status text with points to win game
     let newScoreToWin = this.state.winningScore;
     let newGameStatusText =
-      'First to ' + newScoreToWin + ' points wins the game';
+      'First to ' + newScoreToWin + ' points wins the game!';
     this.setState({
       gameStatusText: newGameStatusText,
     });
@@ -107,7 +107,7 @@ class App extends React.Component {
       );
     } else {
       let newGameStatusText =
-        'First to ' + newScoreToWin + ' points wins the game';
+        'First to ' + newScoreToWin + ' points wins the game!';
       this.reset();
       this.setState({
         winningScore: newScoreToWin,
@@ -135,7 +135,7 @@ class App extends React.Component {
     } else {
       this.endGame();
       let gameWinner = this.state.activePlayer + 1;
-      this.setState({statusText: `Player ${gameWinner} wins!`});
+      this.setState({gameStatusText: `Player ${gameWinner} wins!`});
     }
   }
 
@@ -161,10 +161,14 @@ class App extends React.Component {
       formVisibility: {visibility: 'hidden'},
       formDisabled: 'disabled',
       holdDisabled: '',
+      gameStatusText: null,
+      wrongMoveDisplay: {display: 'none'},
+      rollCount: rollCount,
     });
 
     if (this.state.gamePlaying === false) {
       this.init();
+      this.setState({gameStatusText: null});
     }
 
     if (this.state.rollCount > 0) {
@@ -172,11 +176,6 @@ class App extends React.Component {
     }
 
     rollCount = rollCount + 1;
-
-    this.setState({
-      wrongMoveDisplay: {display: 'none'},
-      rollCount: rollCount,
-    });
 
     // Random number
     const topDice = Math.floor(Math.random() * 6) + 1;

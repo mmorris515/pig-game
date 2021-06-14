@@ -224,5 +224,7 @@ i {
 }
 
 #game-status-text {
-  top: 70px;
+  top: 260px;
+  font-size: 16pt;
+  font-weight: bold;
 }
