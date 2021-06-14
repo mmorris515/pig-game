@@ -23,7 +23,7 @@ import dice4 from '../images/dice4.png';
 import dice5 from '../images/dice5.png';
 import dice6 from '../images/dice6.png';
 
-class Original extends React.Component {
+class Game extends React.Component {
   render() {
     const images = [dice1, dice2, dice3, dice4, dice5, dice6];
     return (
@@ -123,4 +123,4 @@ class Original extends React.Component {
   }
 }
 
-export default Original;
+export default Game;

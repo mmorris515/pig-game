@@ -1,5 +1,5 @@
 import React from 'react';
-import Original from '../pages/original.js';
+import Game from '../pages/game.js';
 import '../styles/style.css';
 
 // Used to control game status text display
@@ -240,7 +240,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Original
+        <Game
           scores={this.state.scores}
           hold={this.hold.bind(this)}
           diceDisplay={this.state.diceDisplay}
