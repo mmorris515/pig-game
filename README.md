@@ -1,6 +1,6 @@
 # Two-dice Pig web application
 
-[Link to project](https://stupefied-colden-eca4ca.netlify.app/ 'Project Link') on Netlify.
+[Demo](https://stupefied-colden-eca4ca.netlify.app/ 'Project Link') on Netlify.
 
 ## Overview
 
