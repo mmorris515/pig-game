@@ -1,6 +1,6 @@
 # Two-dice Pig web application
 
-[Demo](https://stupefied-colden-eca4ca.netlify.app/ 'Project Link') on Netlify.
+Check out the [Demo](https://stupefied-colden-eca4ca.netlify.app/ 'Demo Link') on Netlify.
 
 ## Overview
 
@@ -31,8 +31,8 @@ As this was my first in depth React project, I faced a few challenges along the 
 - **Props**: passing props from parent to child and implementing code in appropriate places within the app.
 - **App design**: controlling UI/UX in the visual layer of the App and managing data flow to ensure logical consistency in the game fuctionality.
 - **Naming conventions**: managing variable, function, and object names, between multiple layers of the app.
-- **Netlify deploy**: fixing icons and font styles which broke when deployed to the Netlify
+- **Netlify deploy**: fixing icons and font styles which broke when deployed to Netlify.
 
 ## Takeaway
 
-Overall it was a lot of fun to put my web development, UI/UX, javascript, and React skills into practice! I'm sure there are plenty of improvements I could make, and newer features of React I could have used (like Hooks and Redux) &mdash; and I may still look to implement those in this project at some point &mdash; but it was a valuable experience to start with the base functionality of React.
+Overall it was a lot of fun to put my web development, UI/UX, Javascript, and React skills into practice! I'm sure there are plenty of improvements I could make, and newer features of React I could have used (like Hooks and Redux) &mdash; and I may still look to implement those in this project at some point &mdash; but it was a valuable experience to start with the base functionality of React.
