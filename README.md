@@ -4,11 +4,11 @@ Check out the [Demo](https://stupefied-colden-eca4ca.netlify.app/ 'Demo Link') o
 
 ## Overview
 
-This project is a simple web application featuring the classic dice game, [Pig](<https://en.wikipedia.org/wiki/Pig_(dice_game)> 'Pig'), specifically the version known as 'Two-dice Pig.' I used a template from a vanilla javascript tutorial by [Jonas Schmedtmann](https://codingheroes.io/ 'coding heroes') as part of his Udemy course [The Complete JavaScript Course 2020: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/ 'The Complete Javascript Course') I absolutely recommend his course for anyone seeking to learn Javascript for the first time or use to brush up their skills.
+This project is a simple web application featuring the classic dice game, [Pig](<https://en.wikipedia.org/wiki/Pig_(dice_game)> 'Pig'), specifically the version known as 'Two-dice Pig.' As a template and inspiration for this project, I started from one of the vanilla javascript projects from [Jonas Schmedtmann's](https://codingheroes.io/ 'coding heroes') excellent Udemy course [The Complete JavaScript Course 2020: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/ 'The Complete Javascript Course') I absolutely recommend this course for anyone seeking to learn Javascript for the first time or use to brush up their skills.
 
-The idea for this project was to practice building an app in React, migrating from Vanilla JS, and fine-tuning UI features. I added some UI features like status message updates, a 'wrong move' icon, and some enable-disable functionality on the buttons and input form to improve feedback and overall UX.
+The idea for this project was to practice building an app in React, migrating from Vanilla JS, and fine-tuning UI features. I added features like status message updates, a 'wrong move' icon, and some enable-disable functionality on the buttons and input form to improve feedback and overall UX.
 
-Some of the code patterns I used are dated as it was my first React app &ndash; I used class components which I learned have fallen out of style to functional components. I also used setState for state management, where I likely would have saved some lines of code with Redux or another state system.
+Some of the code patterns I used are dated, as it was the first React app I created on my own: I used class components which I learned have fallen out of style to functional components; and I also used setState for state management, where I likely would have saved some lines of code with Redux or another state management system.
 
 ## Skills used
 
