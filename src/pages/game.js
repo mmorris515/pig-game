@@ -93,7 +93,7 @@ class Game extends React.Component {
           onClick={this.props.hold}
           disabled={this.props.holdDisabled}
         >
-          <ListItemIcon>
+          <ListItemIcon className={`${hicValue}`}>
             <SendIcon fontSize="small" />
             HOLD
           </ListItemIcon>
