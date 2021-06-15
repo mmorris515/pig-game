@@ -1,10 +1,10 @@
 # Two-dice Pig web application
 
-[Project Link](https://stupefied-colden-eca4ca.netlify.app/ 'Project Link')
+[Link to project](https://stupefied-colden-eca4ca.netlify.app/ 'Project Link') on Netlify.
 
 ## Overview
 
-This project is a simple web application featuring the classic dice game, [Pig](<https://en.wikipedia.org/wiki/Pig_(dice_game)> 'Pig'), specifically the version known as 'Two-dice Pig.' I used a template from a vanilla javascript tutorial by [Jonas Schmedtmann](https://codingheroes.io/ 'coding heroes') as part of his Udemy course [The Complete JavaScript Course 2020: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/ 'The Complete Javascript Course'). I absolutely recommend his course for anyone seeking to learn Javascript for the first time or use to brush up their skills.
+This project is a simple web application featuring the classic dice game, [Pig](<https://en.wikipedia.org/wiki/Pig_(dice_game)> 'Pig'), specifically the version known as 'Two-dice Pig.' I used a template from a vanilla javascript tutorial by [Jonas Schmedtmann](https://codingheroes.io/ 'coding heroes') as part of his Udemy course [The Complete JavaScript Course 2020: From Zero to Expert!](https://www.udemy.com/course/the-complete-javascript-course/ 'The Complete Javascript Course') I absolutely recommend his course for anyone seeking to learn Javascript for the first time or use to brush up their skills.
 
 The idea for this project was to practice building an app in React, migrating from Vanilla JS, and fine-tuning UI features. I added some UI features like status message updates, a 'wrong move' icon, and some enable-disable functionality on the buttons and input form to improve feedback and overall UX.
 
