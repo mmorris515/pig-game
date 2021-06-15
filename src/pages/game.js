@@ -22,6 +22,8 @@ import dice3 from '../images/dice3.png';
 import dice4 from '../images/dice4.png';
 import dice5 from '../images/dice5.png';
 import dice6 from '../images/dice6.png';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import SendIcon from '@material-ui/icons/Send';
 
 class Game extends React.Component {
   render(props) {
@@ -81,18 +83,20 @@ class Game extends React.Component {
         </div>
 
         <button className="btn-new" onClick={this.props.newGame}>
-          <i className="ion-ios-plus-outline"></i>New game
+          <i className=""></i>New game
         </button>
         <button className="btn-roll" onClick={this.props.diceRoll}>
-          <i className="ion-ios-loop"></i>Roll dice
+          <i className=""></i>Roll dice
         </button>
         <button
           className="btn-hold"
           onClick={this.props.hold}
           disabled={this.props.holdDisabled}
         >
-          <i className={`ion-ios-download-outline ${hicValue}`}></i>
-          HOLD
+          <ListItemIcon>
+            <SendIcon fontSize="small" />
+            HOLD
+          </ListItemIcon>
         </button>
 
         <FinalScoreForm

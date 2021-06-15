@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
+
 /* Styles from original tutorial app */
 
 /**********************************************
@@ -109,9 +111,6 @@ body {
   margin-bottom: 130px;
 }
 
-.active {
-  background-color: #f7f7f7;
-}
 .active .player-name {
   font-weight: 300;
 }
@@ -153,11 +152,11 @@ button {
   color: #555;
   background: none;
   border: none;
-  font-family: Lato;
+  font-family: 'Lato';
   font-size: 20px;
   text-transform: uppercase;
   cursor: pointer;
-  font-weight: 300;
+  font-weight: 100;
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -199,6 +198,7 @@ i {
 .btn-new {
   top: 20px;
   z-index: 1000;
+  font-weight: 300;
 }
 .btn-roll {
   top: 408px;
@@ -206,8 +206,7 @@ i {
 .btn-hold {
   top: 472px;
 }
-.btn-hold:disabled,
-.btn-hold[disabled] {
+.btn-hold:disabled {
   color: silver;
 }
 
@@ -259,6 +258,6 @@ i {
 
 #game-status-text {
   top: 260px;
-  font-size: 16pt;
-  font-weight: bold;
+  font-size: 18pt;
+  font-weight: 400;
 }
