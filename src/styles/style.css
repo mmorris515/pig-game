@@ -14,13 +14,17 @@
   font-family: 'Lato';
   text-align: center;
   padding: 10px;
-  width: 160px;
+  width: 200px;
   text-transform: uppercase;
   z-index: 9999;
 }
 
 .final-score:focus {
   outline: none;
+}
+
+.final-score:disabled {
+  color: silver;
 }
 
 * {
@@ -144,10 +148,18 @@ button {
   transition: background-color 0.3s, color 0.3s;
 }
 
-button:hover {
+.btn-new:hover,
+.btn-roll:hover {
   font-weight: 600;
 }
-button:hover i {
+.btn-new:hover,
+.btn-roll:hover i {
+  margin-right: 20px;
+}
+
+/* Hold icon class only called if hold button not disabled */
+.ihover:hover {
+  font-weight: 600;
   margin-right: 20px;
 }
 
@@ -164,6 +176,11 @@ i {
   vertical-align: text-top;
   margin-top: -4px;
   transition: margin 0.3s;
+  /* need prop here to grey icon when hold button disabled */
+}
+
+.greyout {
+  color: silver;
 }
 
 .btn-new {
@@ -175,6 +192,10 @@ i {
 }
 .btn-hold {
   top: 472px;
+}
+.btn-hold:disabled,
+.btn-hold[disabled] {
+  color: silver;
 }
 
 .dice {

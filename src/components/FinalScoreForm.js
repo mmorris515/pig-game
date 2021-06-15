@@ -24,10 +24,11 @@ class FinalScoreForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <input
-          placeholder="Final score"
+          placeholder="Final Score"
           className="final-score"
           onChange={this.handleChange}
           disabled={this.props.formDisabled}
+          type="text"
         />
       </form>
     );

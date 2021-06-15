@@ -24,8 +24,18 @@ import dice5 from '../images/dice5.png';
 import dice6 from '../images/dice6.png';
 
 class Game extends React.Component {
-  render() {
+  render(props) {
     const images = [dice1, dice2, dice3, dice4, dice5, dice6];
+
+    const holdDisabledState = this.props.holdDisabled;
+    let hicValue = null;
+    const holdIconColorCalc = (holdDisabledState) => {
+      holdDisabledState === 'disabled'
+        ? (hicValue = 'greyout')
+        : (hicValue = 'ihover');
+    };
+    holdIconColorCalc(holdDisabledState);
+
     return (
       <div className="wrapper clearfix">
         <div
@@ -81,7 +91,8 @@ class Game extends React.Component {
           onClick={this.props.hold}
           disabled={this.props.holdDisabled}
         >
-          <i className="ion-ios-download-outline"></i>Hold
+          <i className={`ion-ios-download-outline ${hicValue}`}></i>
+          HOLD
         </button>
 
         <FinalScoreForm
