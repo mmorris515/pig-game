@@ -105,6 +105,13 @@ class Game extends React.Component {
           winningScore={this.props.winningScore}
         />
 
+        <a
+          className="game-rules"
+          href="https://en.wikipedia.org/wiki/Pig_(dice_game)#Two-Dice_Pig"
+        >
+          Game rules
+        </a>
+
         <Dice
           diceId="dice-1"
           diceDisplay={this.props.diceDisplay}
