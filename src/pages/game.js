@@ -22,8 +22,9 @@ import dice3 from '../images/dice3.png';
 import dice4 from '../images/dice4.png';
 import dice5 from '../images/dice5.png';
 import dice6 from '../images/dice6.png';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import SendIcon from '@material-ui/icons/Send';
+import SystemUpdateAltOutlinedIcon from '@material-ui/icons/SystemUpdateAltOutlined';
+import CachedIcon from '@material-ui/icons/Cached';
+import ControlPointIcon from '@material-ui/icons/ControlPoint';
 
 class Game extends React.Component {
   render(props) {
@@ -31,10 +32,15 @@ class Game extends React.Component {
 
     const holdDisabledState = this.props.holdDisabled;
     let hicValue = null;
+    let holdTextStyle = null;
     const holdIconColorCalc = (holdDisabledState) => {
-      holdDisabledState === 'disabled'
-        ? (hicValue = 'greyout')
-        : (hicValue = 'ihover');
+      if (holdDisabledState === 'disabled') {
+        hicValue = 'greyout';
+        holdTextStyle = '';
+      } else {
+        hicValue = 'hold-hover hold-icon-active';
+        holdTextStyle = 'hold-text-hover';
+      }
     };
     holdIconColorCalc(holdDisabledState);
 
@@ -83,20 +89,23 @@ class Game extends React.Component {
         </div>
 
         <button className="btn-new" onClick={this.props.newGame}>
-          <i className=""></i>New game
+          <ControlPointIcon className="new-game-icon"></ControlPointIcon>New game
         </button>
+
         <button className="btn-roll" onClick={this.props.diceRoll}>
-          <i className=""></i>Roll dice
+          <CachedIcon className="roll-dice-icon"></CachedIcon>
+          <span className="roll-dice-text">Roll dice</span>
         </button>
+
         <button
           className="btn-hold"
           onClick={this.props.hold}
           disabled={this.props.holdDisabled}
         >
-          <ListItemIcon className={`${hicValue}`}>
-            <SendIcon fontSize="small" />
-            HOLD
-          </ListItemIcon>
+          <SystemUpdateAltOutlinedIcon
+            className={`hold-icon ${hicValue}`}
+          ></SystemUpdateAltOutlinedIcon>
+          <span className={`hold-text ${holdTextStyle}`}>HOLD</span>
         </button>
 
         <FinalScoreForm

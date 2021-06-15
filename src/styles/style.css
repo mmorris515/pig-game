@@ -162,7 +162,7 @@ button {
 
 .btn-new:hover,
 .btn-roll:hover {
-  font-weight: 600;
+  font-weight: 400;
 }
 .btn-new:hover,
 .btn-roll:hover i {
@@ -170,25 +170,13 @@ button {
 }
 
 /* Hold icon class only called if hold button not disabled */
-.ihover:hover {
-  font-weight: 600;
+.hold-hover:hover {
+  font-weight: 400;
   margin-right: 20px;
 }
 
 button:focus {
   outline: none;
-}
-
-i {
-  color: #eb4d4d;
-  display: inline-block;
-  margin-right: 15px;
-  font-size: 32px;
-  line-height: 1;
-  vertical-align: text-top;
-  margin-top: -4px;
-  transition: margin 0.3s;
-  /* need prop here to grey icon when hold button disabled */
 }
 
 .greyout {
@@ -199,15 +187,51 @@ i {
   top: 20px;
   z-index: 1000;
   font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.new-game-icon {
+  color: red;
+  transform: scale(0.9);
+  margin-right: 5px;
+  font-size: 10pt;
 }
 .btn-roll {
   top: 408px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.roll-dice-icon {
+  margin-right: 5px;
+  color: red;
+  transform: scale(0.9);
 }
 .btn-hold {
   top: 472px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .btn-hold:disabled {
   color: silver;
+}
+
+.hold-icon {
+  transform: scale(0.8);
+}
+
+.hold-icon-active {
+  color: red;
+}
+
+.hold-text {
+  margin-left: 5px;
+}
+
+.hold-text-hover:hover {
+  font-weight: 400;
 }
 
 .dice {
@@ -230,7 +254,7 @@ i {
   background-color: #f7f7f7;
 }
 .winner .player-name {
-  font-weight: 300;
+  font-weight: 400;
   color: #eb4d4d;
 }
 
